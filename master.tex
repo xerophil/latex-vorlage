@@ -1,0 +1,73 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%		Markros für Titel etc
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\thefaculty}{Hochschule Hannover -- Fakultät IV}
+
+\newcommand{\theauthor}{Simon Beckstein}
+\newcommand{\thetitle}{Bachelorarbeit}
+\newcommand{\thetopic}{Exemplarische Untersuchung der Wartbarkeit von Webanwendungen unter Einsatz des Google Web Toolkit.}
+\newcommand{\thepublisher}{\thefaculty\\Angewandte Informatik (BIN)\\Prof. Dr. Robert Garmann}
+\newcommand{\theversion}{Stand vom \today}
+
+
+\date{Sommersemester 2012}
+
+\input{header}
+
+
+\begin{document}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%	Titelseite und Verzeichnisse
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\maketitle
+\tableofcontents
+\newpage
+\lstlistoflistings
+\newpage
+\listoffigures
+
+%\begin{minipage}{\textwidth}\listoftables\end{minipage}
+
+
+\input{erklaerung}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%	Hauptarbeit
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\cleardoublepage
+\input{kapitel-einleitung}
+\cleardoublepage
+\input{kapitel-hauptteil}
+\cleardoublepage
+\input{kapitel-schluss}
+\cleardoublepage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%	Anhänge
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\appendix
+\input{anhang-a}
+\cleardoublepage
+\input{anhang-b}
+\cleardoublepage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%	Literatur
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\nocite{*}		%auch nicht verwendete literatur ausgeben
+\bibliographystyle{alphadin}
+
+\bibliography{literatur}
+
+
+
+\end{document}
+

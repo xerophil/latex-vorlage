@@ -1,0 +1,192 @@
+\documentclass[
+	paper=a4,
+	fontsize=12pt,
+	bibliography=totoc,
+	listof=totoc,
+%	draft,
+	twoside,
+]{scrreprt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%		Basis Präambel
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[babel,german=quotes]{csquotes}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%	Einstellungen der Titelsetie
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{\thetitle}
+\subtitle{\thetopic}
+\author{\theauthor}
+\publishers{\thepublisher}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%		Seitenabmessungen
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[
+	left=2.5cm,
+	right=2.5cm,
+	top=2.5cm,
+	bottom=2.5cm,
+	bindingoffset=1cm,
+	includehead,
+	includefoot
+]{geometry}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%		Parameterlose Packete
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{
+%	fancyhdr,
+	graphicx,
+%	amssymb,
+%	makeidx,
+	listings,
+	lmodern,
+	wrapfig,
+	subfig,
+	blindtext,
+	csquotes,
+	lastpage,
+	paralist,
+	color,
+	xcolor,
+	MnSymbol,
+	pdfpages,
+%	todonotes,
+}
+
+\shorthandoff{"}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%		Einstellungen für Listings
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+ 
+\lstset{ %
+	%extendedchars=\true,
+	%inputencoding=utf8,
+	floatplacement=htb,
+	language=Java,
+	basicstyle=\footnotesize\ttfamily,	%quelltext ist etwas kleiner als normaler text
+	numbers=left,
+	numberstyle=\tiny\color{gray},		%kleine, graue Zeilennummern
+	stepnumber=1,
+	numbersep=5pt,                  	%Entfernung der Zeilennummern zum Code
+	backgroundcolor=\color{white},
+	showspaces=false,               	%keine Unterstriche für Leerzeichen
+	showstringspaces=false,         	%auch nicht für Strings
+	showtabs=false,                 	%und nicht für tabs
+	frame=single,
+	rulecolor=\color{black}, 			%Achtung muss gesetzt sein, weils sonst bunte
+										%rahmen gibt.
+	tabsize=2,
+	captionpos=b,						%Beschriftung unter dem Code
+	breaklines=true,					%zeilen Umbrechen, ragen sonst über Rand hinaus
+	breakatwhitespace=false, 			%hartes Umbrechen, folgende Zeilen fügen aber
+										%entsprechende Markierungen hinzu
+	prebreak=\raisebox{0ex}[0ex][0ex]{\color{black}\ensuremath{\rhookswarrow}},
+	postbreak=\raisebox{0ex}[0ex][0ex]{\color{black}\ensuremath{\rcurvearrowse}},
+	title=\lstname,						%Zeigt Dateinamen wenn keine caption angegeben
+	keywordstyle=\color{blue},			%blaue Keywörter, wie void oder null
+	commentstyle=\color{dkgreen},		%grüne Kommentare
+	stringstyle=\color{mauve}, 			%und die Strings 
+	escapeinside={\%*}{*)},				%ermöglicht kommentare im Listing mit %
+	morekeywords={create,Void},			%zusätzliche keywords
+}
+
+%sorgt dafür, dass man in listings auch umlaute benutzen kann. dies
+%geht leider nicht wenn die dokumente utf8 kodiert sind. verwendet man
+%latin1, gibt es keine probleme.
+\lstset{literate=%
+	{Ö}{{\"O}}1
+	{Ä}{{\"A}}1
+	{Ü}{{\"U}}1
+	{ß}{{\ss}}2
+	{ü}{{\"u}}1
+	{ä}{{\"a}}1
+	{ö}{{\"o}}1
+}
+
+%irgend ein komisches Makro, was dafür sorgt, dass über lstinline eingefügter
+%code die selbe textgröße hat wie der normale text, weil
+%normale listings etwas kleiner in der schriftgröße sind
+%http://www.latex-community.org/forum/viewtopic.php?f=5&t=2072
+\makeatletter
+	\lst@AddToHook{TextStyle}{\let\lst@basicstyle\normalsize\ttfamily}
+\makeatother
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%		Einstellungen für PDF
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[colorlinks=true,
+	breaklinks=false,
+	linktocpage=false,
+	linkcolor=black,
+	citecolor=black,
+	filecolor=black,
+	urlcolor=blue,
+	frenchlinks=false,
+	bookmarks=true,
+	bookmarksopen=true,
+	bookmarksopenlevel=3,
+	plainpages=false,
+	pdfpagelabels=true,
+	pdftitle={\thetitle},
+	pdfauthor=\theauthor,
+	pdfsubject={\thetopic},
+]{hyperref}
+
+\pdfinfo{
+    /Author (\theauthor)
+    /Title (\thetitle)
+    /Subject (\thetopic)
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%		Header/Footer der Seiten
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[
+	headsepline,
+	footsepline,
+	automark,
+]{scrpage2}
+
+% Festlegung Kopf- und Fußzeile     
+\defpagestyle{meinstil}{%
+	{\headmark \hfill}
+	{\hfill \headmark}
+	{\hfill \headmark\hfill }
+	(\textwidth,.4pt)
+}{%
+	(\textwidth,.4pt)
+	{\pagemark\hfill\thefaculty}
+	{\theauthor\hfill\pagemark}
+	{\hfill\pagemark} 
+}
+\pagestyle{meinstil} 
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%		Eigene Befehle
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
