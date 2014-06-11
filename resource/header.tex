@@ -3,7 +3,7 @@
 	fontsize=12pt,
 	bibliography=totoc,
 	listof=totoc,
-%	draft,
+	%draft,
 	twoside,
 ]{scrreprt}
 
@@ -14,7 +14,9 @@
 \usepackage[ngerman]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage[babel,german=quotes]{csquotes}
+	
+%allows \enquote{} to easily generate locale quotation marks
+\usepackage[babel,german=quotes]{csquotes} 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -47,6 +49,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage{
+	scrhack,		%supresses warning \float@addtolists detected!
 %	fancyhdr,
 	graphicx,
 %	amssymb,
@@ -55,15 +58,16 @@
 	lmodern,
 	wrapfig,
 	subfig,
-	blindtext,
-	csquotes,
-	lastpage,
-	paralist,
+	blindtext,		%generates some random placeholder text
+	lastpage,		
+	paralist,		%provides compact itemize 
 	color,
 	xcolor,
 	MnSymbol,
 	pdfpages,
 	todonotes,
+	epigraph,		%inspirational quote at the beginning of a chapter
+	refcheck,		%finds unused references. useful for bibliography 
 }
 
 \shorthandoff{"}
@@ -137,8 +141,8 @@
 \usepackage[colorlinks=true,
 	breaklinks=false,
 	linktocpage=false,
-	linkcolor=black,
-	citecolor=black,
+	linkcolor=blue,
+	citecolor=blue,
 	filecolor=black,
 	urlcolor=blue,
 	frenchlinks=false,
@@ -188,5 +192,17 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %		Eigene Befehle
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%aquote für zitat mit quelle rechts unten
+%siehe http://tex.stackexchange.com/questions/13756/quote-environment-with-reference-at-the-end-right
+
+\def\signed #1{{\leavevmode\unskip\nobreak\hfil\penalty50\hskip2em
+  \hbox{}\nobreak\hfil(#1)%
+  \parfillskip=0pt \finalhyphendemerits=0 \endgraf}}
+
+\newsavebox\mybox
+\newenvironment{aquote}[1]
+  {\savebox\mybox{#1}\begin{quotation}}
+  {\signed{\usebox\mybox}\end{quotation}}
 
 
