@@ -48,38 +48,48 @@
 %		Parameterlose Packete
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\usepackage[table]{xcolor}
 \usepackage{
 	scrhack,		%supresses warning \float@addtolists detected!
 %	fancyhdr,
 	graphicx,
-	booktabs,
 %	amssymb,
 %	makeidx,
 	listings,
 	lmodern,
-	wrapfig,
-	subfig,
+	wrapfig,		%wrapping stuff
+	subfig,			%allows you to put multiple pics into one figure
 	blindtext,		%generates some random placeholder text
 	lastpage,		
 	paralist,		%provides compact itemize 
 	color,
-	xcolor,
 	MnSymbol,
 	pdfpages,
 	todonotes,
 	epigraph,		%inspirational quote at the beginning of a chapter
 	refcheck,		%finds unused references. useful for bibliography 
+	booktabs,
+	multirow,
 }
 
 \shorthandoff{"}
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%		Einstellungen für Listings
+%		Farben
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \definecolor{dkgreen}{rgb}{0,0.6,0}
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
 \definecolor{mauve}{rgb}{0.58,0,0.82}
+\definecolor{lightgray}{gray}{0.75}
+ 
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%		Einstellungen für Listings
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
  
 \lstset{ %
 	%extendedchars=\true,
@@ -205,5 +215,4 @@
 \newenvironment{aquote}[1]
   {\savebox\mybox{#1}\begin{quotation}}
   {\signed{\usebox\mybox}\end{quotation}}
-
 
